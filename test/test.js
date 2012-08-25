@@ -59,6 +59,39 @@ describe('CallbackMaybe', function() {
 
     });
 
+    it('should handle arrays', function(done) {
+      var values = ['a','b','c','d','e','f'];
+
+      var aCallback = function(err, list) {
+        should.not.exist(err);
+        should.exist(list);
+        list.should.eql(list);
+        done();
+      }
+
+      var cbm = new CallbackMaybe(aCallback);
+      cbm.write(values.slice(0,5));
+      cbm.write(values[5]);
+      cbm.end();
+    });
+
+    it('should handle arrays above limit', function(done) {
+      var values = [1,2,3,4,5];
+      var limit = 4;
+
+      var aCallback = function(err, list) {
+        should.not.exist(err);
+        should.exist(list);
+        list.should.eql(values.slice(0,limit));
+        done();
+      }
+
+      var cbm = new CallbackMaybe(aCallback, {limit:limit});
+      cbm.write(values);
+      cbm.end();
+
+    });
+
     it('should handle errors', function(done) {
       var aCallback = function(err, list) {
         should.exist(err);
@@ -115,6 +148,51 @@ describe('CallbackMaybe', function() {
       cbm.write("one");
       cbm.write("two");
       cbm.write("three");
+      cbm.end();
+
+    });
+
+    it('should handle arrays', function(done) {
+
+      var cbm = new CallbackMaybe(null);
+      var values = [1,2,3,4,5];
+      var results = [];
+
+      cbm.on('data', function(value) {
+        results.push(value);
+      });
+
+      cbm.on('end', function(count) {
+        count.should.equal(values.length);
+        results.should.eql(values);
+        done();
+      });
+
+      cbm.write(values);
+      cbm.end();
+
+    });
+
+    it('should handle arrays above limit', function(done) {
+
+      var values = ['a','b','c','d','e','f'];
+      var results = [];
+      var limit = 4;
+
+      var cbm = new CallbackMaybe(null,{limit:limit});
+
+      cbm.on('data', function(value) {
+        results.push(value);
+      });
+
+      cbm.on('end', function(count) {
+        var test = values.slice(0, limit);
+        count.should.equal(test.length);
+        results.should.eql(test);
+        done();
+      });
+
+      cbm.write(values);
       cbm.end();
 
     });

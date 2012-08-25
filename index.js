@@ -50,15 +50,26 @@ function CallbackMaybe(func, options) {
 };
 
 CallbackMaybe.prototype.write = function(chunk) {
-  if (this.writable && (!this.limitReached)) {
-    this.count++;
-    this.emit('data', chunk);
-    if (this.count >= this.limit) {
-      this.limitReached = true;
-    }
-    return true;
+
+  var that = this;
+
+  if (Array.isArray(chunk)) {
+
+    chunk.forEach(function(item) {
+      that.write(item);
+    });
+
   } else {
-    return false;
+    if (this.writable && (!this.limitReached)) {
+      this.count++;
+      this.emit('data', chunk);
+      if (this.count >= this.limit) {
+        this.limitReached = true;
+      }
+      return true;
+    } else {
+      return false;
+    }
   }
 };
 
