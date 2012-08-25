@@ -1,7 +1,7 @@
 # node-callbackmaybe
 A module that makes it easy to support both event emitters and callbacks in your node.js API methods.
 
-[![Build Status](https://secure.travis-ci.org/pofallon/node-loremipstream.png)](http://travis-ci.org/pofallon/node-loremipstream)
+[![Build Status](https://secure.travis-ci.org/pofallon/node-callbackmaybe.png?branch=master)](http://travis-ci.org/pofallon/node-callbackmaybe)
 
 ## Usage
 
