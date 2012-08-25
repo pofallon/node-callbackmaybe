@@ -31,7 +31,7 @@ In the above example, if `someMethod` is passed a callback, the callback will be
 
 With or without a callback, an EventEmitter is returned which will emit a `data` event for each item written and an `end` event with a count of items emitted.  An `error` event is emitted if `cbm.error()` is called.
 
-A method implement as above will support the following access methods:
+A method implemented as above will support the following access methods:
 
 ```javascript
 
