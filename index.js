@@ -19,6 +19,14 @@ function CallbackMaybe(func, options) {
     options = {};
   }
 
+  if (options.limit) {
+    this.limit = options.limit;
+  }
+
+  if ((this.limit === null) || (this.limit > 0)) {
+    this.limitReached = false;
+  }
+
   this.writable = true;
   this.count = 0;
 
@@ -42,9 +50,12 @@ function CallbackMaybe(func, options) {
 };
 
 CallbackMaybe.prototype.write = function(chunk) {
-  if (this.writable) {
+  if (this.writable && (!this.limitReached)) {
     this.count++;
     this.emit('data', chunk);
+    if (this.count >= this.limit) {
+      this.limitReached = true;
+    }
     return true;
   } else {
     return false;
@@ -52,13 +63,17 @@ CallbackMaybe.prototype.write = function(chunk) {
 };
 
 CallbackMaybe.prototype.end = function() {
-  this.writable = false;
-  this.emit('end', this.count);
+  if (this.writable) {
+    this.writable = false;
+    this.emit('end', this.count);
+  }
 };
 
 CallbackMaybe.prototype.error = function(err) {
-  this.writable = false;
-  this.emit('error', err);
+  if (this.writable) {
+    this.writable = false;
+    this.emit('error', err);
+  }
 };
 
 module.exports = CallbackMaybe;
