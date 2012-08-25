@@ -1,6 +1,6 @@
 {
   "name": "callbackmaybe",
-  "description": "I just met you / and this is crazy / but here's my module / callbackmaybe",
+  "description": "I just met you / and this is crazy / but here's my module / CallbackMaybe",
   "keywords": ["utility", "events", "callbacks"],
   "author": "Paul O'Fallon <paul@ofallonfamily.com>",
   "homepage": "https://github.com/pofallon/node-callbackmaybe",
@@ -15,7 +15,7 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "1.x.x",
-    "should": "1.x.x",
+    "should": "1.x.x"
   },
   "engine": "node >= 0.4.1",
   "version": "0.0.1",
