@@ -1,6 +1,6 @@
 {
   "name": "callbackmaybe",
-  "description": "I just met you / and this is crazy / but here's my module / CallbackMaybe",
+  "description": "I just met you / and this is crazy / but here's a module / CallbackMaybe",
   "keywords": ["utility", "events", "callbacks"],
   "author": "Paul O'Fallon <paul@ofallonfamily.com>",
   "homepage": "https://github.com/pofallon/node-callbackmaybe",
@@ -18,7 +18,7 @@
     "should": "1.x.x"
   },
   "engine": "node >= 0.4.1",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": [
     "index.js",
     "package.json",
