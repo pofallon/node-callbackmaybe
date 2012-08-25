@@ -9,7 +9,7 @@ A module that makes it easy to support both event emitters and callbacks in your
 
 var CallbackMaybe = require('callbackmaybe');
 
-YourModule.prototype.someMethod(callback) {
+YourModule.prototype.someMethod(param, callback) {
 
   var cbm = new CallbackMaybe(callback, options);
 
@@ -23,7 +23,8 @@ YourModule.prototype.someMethod(callback) {
 
   return(cbm);
 
-}
+};
+
 
 ```
 
@@ -48,6 +49,27 @@ yourModule.someMethod().on('end', function(count) {
 });
 
 ```
+
+You can present the same interface options even if you only have access to an array internally:
+
+```javascript
+
+YourModule.prototype.anotherMethod(param, callback) {
+
+  var cbm = new CallbackMaybe(callback, options);
+
+  aListFunction(function(results) {
+    cbm.write(results);
+    cbm.end();
+  });
+
+  return(cbm);
+
+};
+
+```
+
+`anotherMethod` will have the same access methods as `someMethod`.
 
 Currently only one `option` is supported:
 
