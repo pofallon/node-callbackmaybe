@@ -1,0 +1,29 @@
+{
+  "name": "callbackmaybe",
+  "description": "I just met you / and this is crazy / but here's my module / callbackmaybe",
+  "keywords": ["utility", "events", "callbacks"],
+  "author": "Paul O'Fallon <paul@ofallonfamily.com>",
+  "homepage": "https://github.com/pofallon/node-callbackmaybe",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pofallon/node-callbackmaybe.git"
+  },
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "main": "index",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "1.x.x",
+    "should": "1.x.x",
+  },
+  "engine": "node >= 0.4.1",
+  "version": "0.0.1",
+  "files": [
+    "index.js",
+    "package.json",
+    "README.md",
+    "test"
+  ],
+  "license": "MIT"
+}
