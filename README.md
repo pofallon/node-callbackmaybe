@@ -69,7 +69,7 @@ YourModule.prototype.anotherMethod(param, callback) {
 
 ```
 
-`anotherMethod` will have the same access methods as `someMethod`.
+`anotherMethod` will have the same access methods as `someMethod` above.
 
 Currently only one `option` is supported:
 
