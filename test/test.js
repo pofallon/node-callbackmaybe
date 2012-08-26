@@ -168,8 +168,10 @@ describe('CallbackMaybe', function() {
         done();
       });
 
-      cbm.write(values);
+      var success = cbm.write(values);
       cbm.end();
+
+      success.should.equal(true);
 
     });
 
@@ -192,8 +194,10 @@ describe('CallbackMaybe', function() {
         done();
       });
 
-      cbm.write(values);
+      var success = cbm.write(values);
       cbm.end();
+
+      success.should.equal(false);
 
     });
 

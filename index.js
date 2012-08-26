@@ -59,6 +59,16 @@ CallbackMaybe.prototype.write = function(chunk) {
       that.write(item);
     });
 
+    if (this.limit) {
+      if ((chunk.length + this.count) <= this.limit) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+
   } else {
     if (this.writable && (!this.limitReached)) {
       this.count++;
